@@ -60,7 +60,11 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun CreateBizCard() {
 
-    val buttonClickedState = remember {
+    val buttonClickedState1 = remember {
+        mutableStateOf(false)
+    }
+
+    val buttonClickedState2 = remember {
         mutableStateOf(false)
     }
 
@@ -87,23 +91,66 @@ fun CreateBizCard() {
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally,
 
-            ) {
+                ) {
                 CreateImageProfile()
                 Divider()
                 CreateInfo()
 
-                Button(onClick = {
-                        buttonClickedState.value = !buttonClickedState.value
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp)
+                ) {
+
+                    Button(colors = ButtonDefaults.buttonColors(
+                        backgroundColor = ChampagnePink,
+                        contentColor = Color.Black
+                    ),
+                        shape = RoundedCornerShape(50),
+                        onClick = {
+                            buttonClickedState1.value = !buttonClickedState1.value
+
+                        }) {
+                        Text(
+                            text = "EDIT DETAILS",
+                            style = MaterialTheme.typography.button
+                        )
+
+                    }
+
+                    Button(colors = ButtonDefaults.buttonColors(
+                        backgroundColor = ChampagnePink,
+                        contentColor = Color.Black
+                    ),
+                        shape = RoundedCornerShape(50),
+                        onClick = {
+                        buttonClickedState2.value = !buttonClickedState2.value
 
                     }) {
-                    Text(text = "PORTFOLIO",
-                        style = MaterialTheme.typography.button)
+                        Text(
+                            text = "PORTFOLIO",
+                            style = MaterialTheme.typography.button
+                        )
 
+                    }
                 }
-                if (buttonClickedState.value) {
+
+                if (buttonClickedState1.value) {
+                    EditContent()
+                } else {
+                    if (buttonClickedState2.value) {
+                        Content()
+                    } else {
+                        Box() {
+
+                        }
+                    }
+                }
+
+                if (buttonClickedState2.value) {
                     Content()
-                }
-                else {
+                } else {
                     Box() {
 
                     }
@@ -115,20 +162,28 @@ fun CreateBizCard() {
 }
 
 @Composable
+fun EditContent() {
+    /*TODO*/
+}
+
+@Composable
 fun Content() {
-    Box(modifier = Modifier
-        .fillMaxWidth()
-        .fillMaxHeight()
-        .padding(5.dp)){
-        Surface(modifier = Modifier
-            .padding(3.dp)
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
             .fillMaxHeight()
-            .fillMaxWidth(),
-            shape = RoundedCornerShape(corner = CornerSize(6.dp)),
+            .padding(5.dp)
+    ) {
+        Surface(
+            modifier = Modifier
+                .padding(3.dp)
+                .fillMaxHeight()
+                .fillMaxWidth(),
+            shape = RoundedCornerShape(10),
             border = BorderStroke(width = 2.dp, color = Color.LightGray)
         ) {
             Portfolio(data = listOf("Project 1", "Project 2", "Project 3"))
-            
+
 
         }
     }
@@ -138,21 +193,26 @@ fun Content() {
 fun Portfolio(data: List<String>) {
     LazyColumn(modifier = Modifier.background(BlizzardBlue)) {
         items(data) { item ->
-            Card(modifier = Modifier
-                .padding(13.dp)
-                .fillMaxWidth(),
-                shape = RectangleShape,
+            Card(
+                modifier = Modifier
+                    .padding(13.dp)
+                    .fillMaxWidth(),
+                shape = RoundedCornerShape(50),
                 elevation = 4.dp,
-                backgroundColor = BlizzardBlue) {
-                Row(modifier = Modifier
-                    .padding(8.dp)
-                    .background(BlizzardBlue)
-                    .padding(7.dp)
-                    ) {
-                    CreateImageProfile(modifier = Modifier.size(100.dp))
-                    Column(modifier = Modifier
+                backgroundColor = BlizzardBlue
+            ) {
+                Row(
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .background(BlizzardBlue)
                         .padding(7.dp)
-                        .align(alignment = Alignment.CenterVertically)) {
+                ) {
+                    CreateImageProfile(modifier = Modifier.size(100.dp))
+                    Column(
+                        modifier = Modifier
+                            .padding(7.dp)
+                            .align(alignment = Alignment.CenterVertically)
+                    ) {
                         Text(text = item, fontWeight = FontWeight.Bold)
                         Text(text = "The first project", style = MaterialTheme.typography.body2)
                     }
@@ -163,7 +223,6 @@ fun Portfolio(data: List<String>) {
     }
 
 
-    
 }
 
 @Composable
@@ -211,7 +270,7 @@ private fun CreateImageProfile(modifier: Modifier = Modifier) {
             .size(150.dp)
             .padding(15.dp),
         shape = CircleShape,
-        border = BorderStroke(0.5.dp, Color.LightGray),
+        border = BorderStroke(1.dp, Color.DarkGray),
         elevation = 4.dp,
         color = MaterialTheme.colors.onSurface.copy(alpha = 0.5f)
     ) {
@@ -231,3 +290,4 @@ fun DefaultPreview() {
 
     }
 }
+
