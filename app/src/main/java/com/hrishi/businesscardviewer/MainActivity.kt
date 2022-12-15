@@ -44,7 +44,7 @@ val Gainsboro = Color(0xFFD9D9D9)
 val Ming = Color(0xFF3C6E71)
 
 val titles = listOf("Mobile", "Email", "LinkedIn")
-val content = listOf("9940316676", "hrishabari@gmail.com", "Hrishikesh Naramparambath")
+val content = listOf("+91 9940316676", "hrishabari@gmail.com", "Hrishikesh Naramparambath")
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -213,7 +213,7 @@ fun Portfolio(data: List<String>) {
                         .background(Gainsboro)
                         .padding(7.dp)
                 ) {
-                    CreateImageProfile(modifier = Modifier.size(100.dp))
+                    CreatePhoneImage(modifier = Modifier.size(100.dp))
                     Column(
                         modifier = Modifier
                             .padding(7.dp)
@@ -242,7 +242,7 @@ fun Portfolio(data: List<String>) {
                         .background(Gainsboro)
                         .padding(7.dp)
                 ) {
-                    CreateImageProfile(modifier = Modifier.size(100.dp))
+                    CreateMailImage(modifier = Modifier.size(100.dp))
                     Column(
                         modifier = Modifier
                             .padding(7.dp)
@@ -271,7 +271,7 @@ fun Portfolio(data: List<String>) {
                         .background(Gainsboro)
                         .padding(7.dp)
                 ) {
-                    CreateImageProfile(modifier = Modifier.size(100.dp))
+                    CreateLinkedInImage(modifier = Modifier.size(100.dp))
                     Column(
                         modifier = Modifier
                             .padding(7.dp)
@@ -305,13 +305,6 @@ private fun CreateInfo() {
         )
 
         Text(
-            text = "Sophomore at VIT Chennai",
-            modifier = Modifier.padding(3.dp),
-            style = MaterialTheme.typography.subtitle1,
-            color = IndigoDye
-        )
-
-        Text(
             text = "GitHub: kingslayer1312",
             style = MaterialTheme.typography.subtitle1,
             modifier = Modifier.padding(3.dp),
@@ -339,6 +332,66 @@ private fun CreateImageProfile(modifier: Modifier = Modifier) {
         )
     }
 }
+
+@Composable
+private fun CreatePhoneImage(modifier: Modifier = Modifier) {
+    Surface(
+        modifier = modifier
+            .size(150.dp)
+            .padding(15.dp),
+        shape = CircleShape,
+        border = BorderStroke(1.dp, Color.DarkGray),
+        elevation = 4.dp,
+        color = MaterialTheme.colors.onSurface.copy(alpha = 0.5f)
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.phoneicon),
+            contentDescription = "Phone Image",
+            modifier = modifier.size(135.dp),
+            contentScale = ContentScale.Crop
+        )
+    }
+}
+
+@Composable
+private fun CreateMailImage(modifier: Modifier = Modifier) {
+    Surface(
+        modifier = modifier
+            .size(150.dp)
+            .padding(15.dp),
+        shape = CircleShape,
+        border = BorderStroke(1.dp, Color.DarkGray),
+        elevation = 4.dp,
+        color = MaterialTheme.colors.onSurface.copy(alpha = 0.5f)
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.mailicon),
+            contentDescription = "Mail Image",
+            modifier = modifier.size(135.dp),
+            contentScale = ContentScale.Crop
+        )
+    }
+}
+@Composable
+private fun CreateLinkedInImage(modifier: Modifier = Modifier) {
+    Surface(
+        modifier = modifier
+            .size(150.dp)
+            .padding(15.dp),
+        shape = CircleShape,
+        border = BorderStroke(1.dp, Color.DarkGray),
+        elevation = 4.dp,
+        color = MaterialTheme.colors.onSurface.copy(alpha = 0.5f)
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.link),
+            contentDescription = "Mail Image",
+            modifier = modifier.size(135.dp),
+            contentScale = ContentScale.Crop
+        )
+    }
+}
+
 
 //@Preview(showBackground = true)
 @Composable
