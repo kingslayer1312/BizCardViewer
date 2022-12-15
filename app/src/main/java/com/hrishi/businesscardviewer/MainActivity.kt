@@ -39,6 +39,12 @@ val ChampagnePink = Color(0xFFEFD9CE)
 val Plum = Color(0xFF8F3985)
 val SpaceCadet = Color(0xFF25283D)
 val BlizzardBlue = Color(0xFF98DFEA)
+val IndigoDye = Color(0xFF284B63)
+val Gainsboro = Color(0xFFD9D9D9)
+val Ming = Color(0xFF3C6E71)
+
+val titles = listOf("Mobile", "Email", "LinkedIn")
+val content = listOf("9940316676", "hrishabari@gmail.com", "Hrishikesh Naramparambath")
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,7 +79,7 @@ fun CreateBizCard() {
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight(),
-        color = SpaceCadet
+        color = Gainsboro
 
     ) {
         Card(
@@ -82,7 +88,7 @@ fun CreateBizCard() {
                 .height(390.dp)
                 .padding(5.dp),
             shape = RoundedCornerShape(corner = CornerSize(15.dp)),
-            backgroundColor = SpaceCadet,
+            backgroundColor = Gainsboro,
             elevation = 4.dp
         ) {
 
@@ -104,8 +110,8 @@ fun CreateBizCard() {
                 ) {
 
                     Button(colors = ButtonDefaults.buttonColors(
-                        backgroundColor = ChampagnePink,
-                        contentColor = Color.Black
+                        backgroundColor = IndigoDye,
+                        contentColor = Color.LightGray
                     ),
                         shape = RoundedCornerShape(50),
                         onClick = {
@@ -120,8 +126,8 @@ fun CreateBizCard() {
                     }
 
                     Button(colors = ButtonDefaults.buttonColors(
-                        backgroundColor = ChampagnePink,
-                        contentColor = Color.Black
+                        backgroundColor = IndigoDye,
+                        contentColor = Color.LightGray
                     ),
                         shape = RoundedCornerShape(50),
                         onClick = {
@@ -182,7 +188,7 @@ fun Content() {
             shape = RoundedCornerShape(10),
             border = BorderStroke(width = 2.dp, color = Color.LightGray)
         ) {
-            Portfolio(data = listOf("Project 1", "Project 2", "Project 3"))
+            Portfolio(data = titles)
 
 
         }
@@ -191,20 +197,20 @@ fun Content() {
 
 @Composable
 fun Portfolio(data: List<String>) {
-    LazyColumn(modifier = Modifier.background(BlizzardBlue)) {
-        items(data) { item ->
+    LazyColumn(modifier = Modifier.background(Ming)) {
+        item {
             Card(
                 modifier = Modifier
                     .padding(13.dp)
                     .fillMaxWidth(),
                 shape = RoundedCornerShape(50),
                 elevation = 4.dp,
-                backgroundColor = BlizzardBlue
+                backgroundColor = Gainsboro
             ) {
                 Row(
                     modifier = Modifier
                         .padding(8.dp)
-                        .background(BlizzardBlue)
+                        .background(Gainsboro)
                         .padding(7.dp)
                 ) {
                     CreateImageProfile(modifier = Modifier.size(100.dp))
@@ -213,8 +219,66 @@ fun Portfolio(data: List<String>) {
                             .padding(7.dp)
                             .align(alignment = Alignment.CenterVertically)
                     ) {
-                        Text(text = item, fontWeight = FontWeight.Bold)
-                        Text(text = "The first project", style = MaterialTheme.typography.body2)
+                        Text(text = titles[0], fontWeight = FontWeight.Bold)
+                        Text(text = content[0], style = MaterialTheme.typography.body2)
+                    }
+
+                }
+            }
+        }
+
+        item {
+            Card(
+                modifier = Modifier
+                    .padding(13.dp)
+                    .fillMaxWidth(),
+                shape = RoundedCornerShape(50),
+                elevation = 4.dp,
+                backgroundColor = Gainsboro
+            ) {
+                Row(
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .background(Gainsboro)
+                        .padding(7.dp)
+                ) {
+                    CreateImageProfile(modifier = Modifier.size(100.dp))
+                    Column(
+                        modifier = Modifier
+                            .padding(7.dp)
+                            .align(alignment = Alignment.CenterVertically)
+                    ) {
+                        Text(text = titles[1], fontWeight = FontWeight.Bold)
+                        Text(text = content[1], style = MaterialTheme.typography.body2)
+                    }
+
+                }
+            }
+        }
+
+        item {
+            Card(
+                modifier = Modifier
+                    .padding(13.dp)
+                    .fillMaxWidth(),
+                shape = RoundedCornerShape(50),
+                elevation = 4.dp,
+                backgroundColor = Gainsboro
+            ) {
+                Row(
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .background(Gainsboro)
+                        .padding(7.dp)
+                ) {
+                    CreateImageProfile(modifier = Modifier.size(100.dp))
+                    Column(
+                        modifier = Modifier
+                            .padding(7.dp)
+                            .align(alignment = Alignment.CenterVertically)
+                    ) {
+                        Text(text = titles[2], fontWeight = FontWeight.Bold)
+                        Text(text = content[2], style = MaterialTheme.typography.body2)
                     }
 
                 }
@@ -237,28 +301,21 @@ private fun CreateInfo() {
             text = "Hrishikesh Naramparambath",
             modifier = Modifier.padding(5.dp),
             style = MaterialTheme.typography.h4,
-            color = ChampagnePink
+            color = Color.Black
         )
 
         Text(
             text = "Sophomore at VIT Chennai",
             modifier = Modifier.padding(3.dp),
             style = MaterialTheme.typography.subtitle1,
-            color = Color.White
+            color = IndigoDye
         )
 
         Text(
             text = "GitHub: kingslayer1312",
             style = MaterialTheme.typography.subtitle1,
             modifier = Modifier.padding(3.dp),
-            color = Color.White
-        )
-
-        Text(
-            text = "Linkedin: Hrishikesh Naramparambath",
-            style = MaterialTheme.typography.subtitle1,
-            modifier = Modifier.padding(3.dp),
-            color = Color.White
+            color = IndigoDye
         )
     }
 }
