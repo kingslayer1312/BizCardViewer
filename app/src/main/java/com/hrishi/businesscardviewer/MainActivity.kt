@@ -219,8 +219,8 @@ fun Portfolio(data: List<String>) {
                             .padding(7.dp)
                             .align(alignment = Alignment.CenterVertically)
                     ) {
-                        Text(text = titles[0], fontWeight = FontWeight.Bold)
-                        Text(text = content[0], style = MaterialTheme.typography.body2)
+                        Text(text = titles[0], color = Color.Black, fontWeight = FontWeight.Bold)
+                        Text(text = content[0], color = Color.Black, style = MaterialTheme.typography.body2)
                     }
 
                 }
@@ -248,8 +248,8 @@ fun Portfolio(data: List<String>) {
                             .padding(7.dp)
                             .align(alignment = Alignment.CenterVertically)
                     ) {
-                        Text(text = titles[1], fontWeight = FontWeight.Bold)
-                        Text(text = content[1], style = MaterialTheme.typography.body2)
+                        Text(text = titles[1], color = Color.Black, fontWeight = FontWeight.Bold)
+                        Text(text = content[1], color = Color.Black, style = MaterialTheme.typography.body2)
                     }
 
                 }
@@ -277,8 +277,8 @@ fun Portfolio(data: List<String>) {
                             .padding(7.dp)
                             .align(alignment = Alignment.CenterVertically)
                     ) {
-                        Text(text = titles[2], fontWeight = FontWeight.Bold)
-                        Text(text = content[2], style = MaterialTheme.typography.body2)
+                        Text(text = titles[2], color = Color.Black, fontWeight = FontWeight.Bold)
+                        Text(text = content[2], color = Color.Black, style = MaterialTheme.typography.body2)
                     }
 
                 }
