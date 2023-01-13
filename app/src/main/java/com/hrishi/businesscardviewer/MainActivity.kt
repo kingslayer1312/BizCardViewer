@@ -17,7 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.modifier.modifierLocalOf
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
@@ -52,11 +51,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun CreateBizCard() {
 
-    val buttonClickedState1 = remember {
-        mutableStateOf(false)
-    }
-
-    val buttonClickedState2 = remember {
+    val buttonClickedState = remember {
         mutableStateOf(false)
     }
 
@@ -89,7 +84,7 @@ fun CreateBizCard() {
                 CreateInfo()
 
                 Row(
-                    horizontalArrangement = Arrangement.SpaceBetween,
+                    horizontalArrangement = Arrangement.Center,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(8.dp)
@@ -101,22 +96,7 @@ fun CreateBizCard() {
                     ),
                         shape = RoundedCornerShape(50),
                         onClick = {
-                            buttonClickedState1.value = !buttonClickedState1.value
-                        }) {
-                        Text(
-                            text = "EDIT DETAILS",
-                            style = MaterialTheme.typography.button
-                        )
-
-                    }
-
-                    Button(colors = ButtonDefaults.buttonColors(
-                        backgroundColor = IndigoDye,
-                        contentColor = Color.LightGray
-                    ),
-                        shape = RoundedCornerShape(50),
-                        onClick = {
-                        buttonClickedState2.value = !buttonClickedState2.value
+                        buttonClickedState.value = !buttonClickedState.value
 
                     }) {
                         Text(
@@ -127,19 +107,7 @@ fun CreateBizCard() {
                     }
                 }
 
-                if (buttonClickedState1.value) {
-                    EditContent()
-                } else {
-                    if (buttonClickedState2.value) {
-                        Content()
-                    } else {
-                        Box() {
-
-                        }
-                    }
-                }
-
-                if (buttonClickedState2.value) {
+                if (buttonClickedState.value) {
                     Content()
                 } else {
                     Box() {
@@ -148,27 +116,6 @@ fun CreateBizCard() {
                 }
 
             }
-        }
-    }
-}
-
-@Composable
-fun EditContent() {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxWidth()
-            .padding(5.dp)
-    ) {
-        Surface(
-            modifier = Modifier
-                .padding(3.dp)
-                .fillMaxHeight()
-                .fillMaxWidth(),
-            shape = RoundedCornerShape(10),
-            border = BorderStroke(width = 2.dp, color = Color.LightGray)
-        ) {
-            PortfolioEdit()
         }
     }
 }
@@ -194,97 +141,6 @@ fun Content() {
     }
 }
 
-@Composable
-fun PortfolioEdit() {
-    LazyColumn(modifier = Modifier.background(Ming)) {
-        item {
-            Card(
-                modifier = Modifier
-                    .padding(13.dp)
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(50),
-                elevation = 4.dp,
-                backgroundColor = Gainsboro
-            ) {
-                Row(
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .background(Gainsboro)
-                        .padding(7.dp)
-                ) {
-                    CreatePhoneImage(modifier = Modifier.size(100.dp))
-                    Column(
-                        modifier = Modifier
-                            .padding(7.dp)
-                            .align(alignment = Alignment.CenterVertically)
-                    ) {
-                        Text(text = titles[0], color = Color.Black, fontWeight = FontWeight.Bold)
-                        PhoneTextBox()
-                    }
-
-                }
-            }
-        }
-
-        item {
-            Card(
-                modifier = Modifier
-                    .padding(13.dp)
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(50),
-                elevation = 4.dp,
-                backgroundColor = Gainsboro
-            ) {
-                Row(
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .background(Gainsboro)
-                        .padding(7.dp)
-                ) {
-                    CreateMailImage(modifier = Modifier.size(100.dp))
-                    Column(
-                        modifier = Modifier
-                            .padding(7.dp)
-                            .align(alignment = Alignment.CenterVertically)
-                    ) {
-                        Text(text = titles[1], color = Color.Black, fontWeight = FontWeight.Bold)
-                        EmailTextBox()
-                    }
-
-                }
-            }
-        }
-
-        item {
-            Card(
-                modifier = Modifier
-                    .padding(13.dp)
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(50),
-                elevation = 4.dp,
-                backgroundColor = Gainsboro
-            ) {
-                Row(
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .background(Gainsboro)
-                        .padding(7.dp)
-                ) {
-                    CreateLinkedInImage(modifier = Modifier.size(100.dp))
-                    Column(
-                        modifier = Modifier
-                            .padding(7.dp)
-                            .align(alignment = Alignment.CenterVertically)
-                    ) {
-                        Text(text = titles[2], color = Color.Black, fontWeight = FontWeight.Bold)
-                        LinkedinTextBox()
-                    }
-
-                }
-            }
-        }
-    }
-}
 
 @Composable
 fun PhoneTextBox() {
