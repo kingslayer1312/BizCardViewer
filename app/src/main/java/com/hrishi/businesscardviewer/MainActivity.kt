@@ -29,7 +29,7 @@ val Gainsboro = Color(0xFFD9D9D9)
 val Ming = Color(0xFF3C6E71)
 
 val titles = listOf("Mobile", "Email", "LinkedIn")
-val content = listOf("+91 9940316676", "hrishabari@gmail.com", "Hrishikesh Naramparambath")
+val content = listOf("+91 xxxxx xxxxx", "john.doe@gmail.com", "John Doe")
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -288,14 +288,14 @@ private fun CreateInfo() {
 
         Text(
             textAlign = TextAlign.Center,
-            text = "Hrishikesh Naramparambath",
+            text = "John Doe",
             modifier = Modifier.padding(5.dp),
             style = MaterialTheme.typography.h4,
             color = Color.Black
         )
 
         Text(
-            text = "GitHub: kingslayer1312",
+            text = "GitHub: johndoe",
             style = MaterialTheme.typography.subtitle1,
             modifier = Modifier.padding(3.dp),
             color = IndigoDye
